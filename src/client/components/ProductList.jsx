@@ -5,7 +5,7 @@ const ProductList = () => {
 
   useEffect(() => {
     // Fetch products from your API
-    //fetch("/api/") Donot know where to fetch the API from. Will have to ask group. 
+   // fetch("/api/") Do not know where to pull the API, I will ask the group
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching products:", error));
