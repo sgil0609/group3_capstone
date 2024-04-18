@@ -17,7 +17,6 @@ model User {
   modified_at     DateTime         @updatedAt
   user_addresses  User_Address[]
   user_payments   User_Payment[]
-  shopping_sessions Shopping_Session[]
   orders          Order[]
 }
 
@@ -42,24 +41,6 @@ model User_Payment {
   user          User     @relation(fields: [userId], references: [id])
 }
 
-model Shopping_Session {
-  id              Int            @id @default(autoincrement())   
-  userId          Int
-  user            User           @relation(fields: [userId], references: [id])
-  cart_items      Cart_Item[]
-  created_at      DateTime       @default(now())
-  modified_at     DateTime       @updatedAt
-}
-
-model Cart_Item {
-  id                Int            @id @default(autoincrement())   
-  shoppingSessionId Int
-  productId         Int
-  quantity          Decimal
-  shopping_session  Shopping_Session @relation(fields: [shoppingSessionId], references: [id])
-  product_id        Int
-  product           Product          @relation(fields: [product_id], references: [id])
-}
 
 model Product {
   id                  Int                @id @default(autoincrement())   
@@ -72,7 +53,6 @@ model Product {
   productCategoryId   Int
   product_category    Product_Category  @relation(fields: [productCategoryId], references: [id])
   order_items         Order_Item[]
-  cart_id             Cart_Item[]
 }
 
 model Product_Category {
@@ -88,6 +68,7 @@ model Order {
   id                Int              @id @default(autoincrement())
   total             Decimal
   userId            Int
+  status            String
   user              User             @relation(fields: [userId], references: [id])
   created_at        DateTime         @default(now())
   modified_at       DateTime         @updatedAt
@@ -111,7 +92,9 @@ model Order_Item {
   id                Int      @id @default(autoincrement())   
   orderId           Int
   productId         Int
+  unit_price        Decimal
   quantity          Decimal
   order             Order    @relation(fields: [orderId], references: [id])
   product           Product  @relation(fields: [productId], references: [id])
 }
+
