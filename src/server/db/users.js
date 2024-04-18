@@ -1,6 +1,10 @@
 const db = require('./client')
 const bcrypt = require('bcrypt');
-const SALT_COUNT = 10;
+
+// Example: Hashing a password
+const saltRounds = 10;
+const plainPassword = 'mySecretPassword';
+const hashedPassword = bcrypt.hashSync(plainPassword, saltRounds);
 
 const createUser = async({ name='first last', email, password }) => {
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
