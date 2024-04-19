@@ -50,3 +50,10 @@ npm run dev
 9. Open your browser at `http://localhost:3000`
 
 10. Build something cool! 😎
+
+
+--------------------------
+To run the Prisma schema, run the following
+```
+npx prisma migrate dev --name capstone
+```
