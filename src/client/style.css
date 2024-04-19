@@ -21,7 +21,7 @@ header {
   background-color: white;
   color: red;
   padding: 10px 20px;
-  padding-top: 40px;
+  padding-top: 70px;
   position: relative;
 }
 
@@ -30,10 +30,11 @@ header {
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 30px;
+  font-size: 60px;
 }
 
 nav ul {
+  font-size: 25px;
   list-style: none;
   padding: 0;
   margin: 0;
