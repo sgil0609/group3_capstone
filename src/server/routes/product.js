@@ -1,9 +1,17 @@
-const express = require('express');
-const { getProducts, createProduct } = require('../api/product');
-
+const express = require("express");
 const router = express.Router();
 
-router.get('/', getProducts);
-router.post('/product/id:', create )
+// Product routes
+router.get("/products", (req, res) => {
+  res.json({ message: "product retrieved successfully" });
+});
+
+router.get("/products/:id", (req, res) => {});
+
+router.post("/products", (req, res) => {});
+
+router.put("/products/:id", (req, res) => {});
+
+router.delete("/products/:id", (req, res) => {});
 
 module.exports = router;
