@@ -30,7 +30,7 @@ header {
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 60px;
+  font-size: 40px;
 }
 
 nav ul {
@@ -58,22 +58,27 @@ nav ul li a {
   position: relative;
 }
 
-.dropdown-content {
+.dropdown-content, .nested-dropdown {
   display: none;
   position: absolute;
   background-color: white;
-  min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(red, green, blue, alpha);
+  min-width: 200px;
+  box-shadow: 0px 10px 20px 0px rgba(red, green, blue, alpha);
   z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content a, .nested-dropdown a {
   color: black;
   padding: 5px;
   display: block;
   text-decoration: none;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content, .dropdown-content:hover .nested-dropdown {
   display: block;
+}
+
+.nested-dropdown a {
+  top: 0;
+  left: 100%;
 }
