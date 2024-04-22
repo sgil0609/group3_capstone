@@ -1,9 +1,11 @@
 // server/api/index.js
-const express = require('express');
-const productsRouter = require('../routes/product');
-
+const express = require("express");
+const productRouter = require("./product");
+const usersRouter = require("./users");
 const router = express.Router();
 
-router.use('/products', productsRouter);
+router.use("/product", productRouter);
+router.use("/users", usersRouter);
+// cart router
 
 module.exports = router;
