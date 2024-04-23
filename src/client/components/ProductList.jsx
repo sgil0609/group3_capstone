@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from "react";
+import { getProducts } from "../../server/api/product";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    // Fetch products from your API
-   // fetch("/api/") Do not know where to pull the API, I will ask the group
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.error("Error fetching products:", error));
+  useEffect(async () => {
+    await fetchProducts();
   }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("/api/product");
+      if (!response.ok) {
+        throw new Error("Failed to fetch product");
+      }
+      const data = await response.json();
+      console.log(data);
+      setProducts(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="product-list">
