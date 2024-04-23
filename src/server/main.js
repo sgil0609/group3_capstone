@@ -1,12 +1,22 @@
-const express = require('express');
-const apiRouter = require('./api');
+require("dotenv").config();
 
+const express = require("express");
+const router = require("vite-express");
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use('/api', apiRouter);
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+app.use(express.static("public"));
+
+// const db = require("./db/client");
+// db.connect();
+
+const apiRouter = require("./api");
+app.use("/api", apiRouter);
+
+router.listen(app, 3000, () =>
+  console.log("Server is listening on port 3000...")
+);
+
+module.exports = router;
