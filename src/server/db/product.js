@@ -1,5 +1,4 @@
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+const prisma = require("./client");
 
 async function getProductId() {
   const product = await prisma.product.findFirst();
