@@ -6,11 +6,9 @@ const productRouter = require("./product");
 const usersRouter = require("./users");
 const authRouter = require("./auth");
 
-
 router.use("/product", productRouter);
 router.use("/users", usersRouter);
-//router.use("/cart", cartRouter);
-router.use('/auth', authRouter);
-
+router.use("/auth", authRouter);
+// cart router
 
 module.exports = router;

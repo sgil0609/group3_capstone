@@ -2,33 +2,32 @@ const prisma = require("./client");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-const createUser = async ({ first_name, last_name, email, password }) => {
+const createUser = async (first_name, last_name, email, password) => {
   try {
-      // Check if user already exists
-      const existingUser = await prisma.user.findUnique({
-          where: { email },
-      });
-      if (existingUser) {
-        return res.status(400).json({ msg: 'User already exists' });
-      }
-      // Hash the password
-      const hashedPassword = await bcrypt.hash(password, saltRounds);
-      // Create a new user
-      const newUser = await prisma.user.create({
-          data: {
-              first_name,
-              last_name,
-              email,
-              password: hashedPassword,
-          },
-      });
-
-      return newUser;
+    // Check if user already exists
+    const existingUser = await prisma.user.findUnique({
+      where: { email },
+    });
+    if (existingUser) {
+      throw Error("User already exists!");
+    }
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    // Create a new user
+    const newUser = await prisma.user.create({
+      data: {
+        first_name,
+        last_name,
+        email,
+        password: hashedPassword,
+      },
+    });
+    delete newUser.password;
+    return newUser;
   } catch (error) {
-      throw error;
+    throw error;
   }
 };
-
 
 const getUser = async ({ email, password }) => {
   if (!email || !password) {
