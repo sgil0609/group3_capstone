@@ -1,61 +1,74 @@
-const db = require('./client')
-const bcrypt = require('bcrypt');
-
-// Example: Hashing a password
+const prisma = require("./client");
+const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const plainPassword = 'mySecretPassword';
-const hashedPassword = bcrypt.hashSync(plainPassword, saltRounds);
 
-const createUser = async({ name='first last', email, password }) => {
-    const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
-    try {
-        const { rows: [user ] } = await db.query(`
-        INSERT INTO users(name, email, password)
-        VALUES($1, $2, $3)
-        ON CONFLICT (email) DO NOTHING
-        RETURNING *`, [name, email, hashedPassword]);
-
-        return user;
-    } catch (err) {
-        throw err;
+const createUser = async (first_name, last_name, email, password) => {
+  try {
+    // Check if user already exists
+    const existingUser = await prisma.user.findUnique({
+      where: { email },
+    });
+    if (existingUser) {
+      throw Error("User already exists!");
     }
-}
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    // Create a new user
+    const newUser = await prisma.user.create({
+      data: {
+        first_name,
+        last_name,
+        email,
+        password: hashedPassword,
+      },
+    });
+    delete newUser.password;
+    return newUser;
+  } catch (error) {
+    throw error;
+  }
+};
 
-const getUser = async({email, password}) => {
-    if(!email || !password) {
-        return;
-    }
-    try {
-        const user = await getUserByEmail(email);
-        if(!user) return;
-        const hashedPassword = user.password;
-        const passwordsMatch = await bcrypt.compare(password, hashedPassword);
-        if(!passwordsMatch) return;
-        delete user.password;
-        return user;
-    } catch (err) {
-        throw err;
-    }
-}
+const getUser = async ({ email, password }) => {
+  if (!email || !password) {
+    return;
+  }
+  try {
+    const user = await getUserByEmail(email);
+    if (!user) return;
+    const hashedPassword = user.password;
+    const passwordsMatch = await bcrypt.compare(password, hashedPassword);
+    if (!passwordsMatch) return;
+    delete user.password;
+    return user;
+  } catch (err) {
+    throw err;
+  }
+};
 
-const getUserByEmail = async(email) => {
-    try {
-        const { rows: [ user ] } = await db.query(`
+const getUserByEmail = async (email) => {
+  try {
+    const {
+      rows: [user],
+    } = await prisma.query(
+      `
         SELECT * 
         FROM users
-        WHERE email=$1;`, [ email ]);
+        WHERE email=$1;`,
+      [email]
+    );
 
-        if(!user) {
-            return;
-        }
-        return user;
-    } catch (err) {
-        throw err;
+    if (!user) {
+      return;
     }
-}
+    return user;
+  } catch (err) {
+    throw err;
+  }
+};
 
 module.exports = {
-    createUser,
-    getUser,
-    getUserByEmail
+  createUser,
+  getUser,
+  getUserByEmail,
 };

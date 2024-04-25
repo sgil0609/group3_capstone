@@ -17,7 +17,8 @@ git merge boilermaker/main
 3. Install packages
 
 ```bash
-npm i
+npm install -dev prisma
+npm install @prisma/client bcrypt jsonwebtoken uuid
 ```
 
 4. Add a `.env` file with your secret value for auth
@@ -54,6 +55,8 @@ npm run dev
 
 --------------------------
 To run the Prisma schema, run the following
+
 ```
 npx prisma migrate dev --name capstone
 ```
+
