@@ -1,10 +1,12 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import ProductList from "./components/ProductList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import './style.css';
 
 const SubNavHome = () => {
@@ -54,19 +56,26 @@ const SubNavAccount = () => {
 };
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState("")
+
   return (
       <div>
         <header>
           <div className="logo">SADD</div>
           <div className="navbar">
             <SubNavHome />
-            <SubNavMens />
-            <SubNavWomens />
+            <SubNavMens onClick = {() => setSelectedCategory("mens")} />
+            <SubNavWomens onClick = {() => setSelectedCategory("womens")}/>
             <SubNavAccount />
+            <Link className="subnavbtn" to="/cart">
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </Link>
           </div>
         </header>
-          <ProductList />
-          <Login />           
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/productlist" element={<ProductList category={selectedCategory}/>} />
+        </Routes>
     </div>
   );
 }
