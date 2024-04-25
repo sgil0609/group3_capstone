@@ -18,11 +18,11 @@ const SubNavHome = () => {
 const SubNavMens = () => {
   return (
     <div className="subnav">
-        <button className="subnavbtn" to>Mens <i className="fa fa-caret-down"></i></button>
+        <Link className="subnavbtn" to="/mens">Mens <i className="fa fa-caret-down"></i></Link>
         <div className="subnav-content">
-            <a href="tops">Tops</a>
-            <a href="bottoms">Bottoms</a>
-            <a href="shoes">Shoes</a>
+            <Link to="/mens/tops">Tops</Link>
+            <Link to="/mens/bottoms">Bottoms</Link>
+            <Link to="/mens/shoes">Shoes</Link>
         </div>
     </div>
   );
@@ -31,11 +31,11 @@ const SubNavMens = () => {
 const SubNavWomens = () => {
   return (
     <div className="subnav">
-        <button className="subnavbtn">Womens <i className="fa fa-caret-down"></i></button>
+        <Link className="subnavbtn" to="/womens">Womens <i className="fa fa-caret-down"></i></Link>
         <div className="subnav-content">
-            <a href="tops">Tops</a>
-            <a href="bottoms">Bottoms</a>
-            <a href="shoes">Shoes</a>
+            <Link to="/womens/tops">Tops</Link>
+            <Link to="/womens/bottoms">Bottoms</Link>
+            <Link to="/womens/shoes">Shoes</Link>
         </div>
     </div>
   );
@@ -44,10 +44,10 @@ const SubNavWomens = () => {
 const SubNavAccount = () => {
   return (
     <div className="subnav">
-        <button className="subnavbtn">My Account <i className="fa fa-caret-down"></i></button>
+        <Link className="subnavbtn" to="/login">My Account <i className="fa fa-caret-down"></i></Link>
         <div className="subnav-content">
-            <a href="login">Login</a>
-            <a href="register">Register</a>
+            <Link to="/login">Login</Link>
+            <Link to="/login">Register</Link>
         </div>
     </div>
   );
@@ -55,7 +55,6 @@ const SubNavAccount = () => {
 
 function App() {
   return (
-    <>
       <div>
         <header>
           <div className="logo">SADD</div>
@@ -64,12 +63,11 @@ function App() {
             <SubNavMens />
             <SubNavWomens />
             <SubNavAccount />
-            <Login />
-            <ProductList />
           </div>
         </header>
+          <ProductList />
+          <Login />           
     </div>
-    </>
   );
 }
 
