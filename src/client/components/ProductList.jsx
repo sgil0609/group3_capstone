@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { getProducts } from "../../server/api/product";
+//import { getProducts } from "../../server/api/product";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
 
-  useEffect(async () => {
-    await fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
-    try {
-      const response = await fetch("/api/product");
-      if (!response.ok) {
-        throw new Error("Failed to fetch product");
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/product");
+        if (!response.ok) {
+          throw new Error("Failed to fetch product");
+        }
+        const data = await response.json();
+        console.log(data);
+        setProducts(data);
+      } catch (error) {
+        console.error(error);
       }
-      const data = await response.json();
-      console.log(data);
-      setProducts(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    };
+    fetchProducts();
+  }, []);
 
   return (
     <div className="product-list">
