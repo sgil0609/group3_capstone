@@ -31,7 +31,6 @@ header {
   font-size: 60px;
 }
 
-/* The navigation menu */
 .navbar {
   display: flex;
   align-items: center;
@@ -49,6 +48,8 @@ header {
   border: none;
   outline: none;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .subnav-content {
@@ -78,4 +79,9 @@ header {
 
 #comp-ing {
   width: 250px;
+}
+
+.product-list {
+  margin-top: 20px;
+  padding: 10px 20px;
 }
