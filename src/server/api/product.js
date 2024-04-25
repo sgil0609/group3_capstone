@@ -2,7 +2,6 @@ const express = require("express");
 const productRouter = express.Router();
 const prisma = require("../db/client");
 
-// Route to get all products
 productRouter.get("/", async (req, res, next) => {
   try {
     const products = await prisma.product.findMany();
@@ -13,7 +12,6 @@ productRouter.get("/", async (req, res, next) => {
   }
 });
 
-// Route to get a specific product by ID
 productRouter.get("/product/:id", async (req, res, next) => {
   const productId = parseInt(req.params.id); 
   try {

@@ -15,21 +15,18 @@ productCategory.get("/", async (req, res, next) => {
  
  
   productCategory.post('/add', async (req, res) => {
-    const { name, description, price, stock, productCategoryId } = req.body;
+    const { name, description} = req.body;
     try {
         const newCategory = await prisma.product_Category.create({
             data: {
                 name,
-                description,
-                price: parseFloat(price),
-                stock: parseInt(stock, 10),
-                productCategoryId: parseInt(productCategoryId, 10)
+                description
             }
         });
-        res.status(201).json(newProduct);
+        res.status(201).json(newCategory);
     } catch (error) {
         console.error("Failed to create product:", error);
-        res.status(500).json({ message: "Unable to add" });
+        res.status(500).json({ message: "Unable to add category" });
     }
   });  
 
