@@ -84,8 +84,13 @@ header {
 
 .product-list {
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 20px;
   font-family: Georgia;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
 }
 
 .login {

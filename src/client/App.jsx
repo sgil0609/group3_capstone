@@ -18,10 +18,10 @@ const SubNavHome = () => {
   );
 };
 
-const SubNavMens = () => {
+const SubNavMens = ({ setSelectedCategory }) => {
   return (
     <div className="subnav">
-        <Link className="subnavbtn" to="/mens">Mens <i className="fa fa-caret-down"></i></Link>
+        <Link className="subnavbtn" to="/mens" onClick={() => setSelectedCategory("mens")}>Mens <i className="fa fa-caret-down"></i></Link>
         <div className="subnav-content">
             <Link to="/mens/tops">Tops</Link>
             <Link to="/mens/bottoms">Bottoms</Link>
@@ -31,10 +31,10 @@ const SubNavMens = () => {
   );
 };
 
-const SubNavWomens = () => {
+const SubNavWomens = ({ setSelectedCategory }) => {
   return (
     <div className="subnav">
-        <Link className="subnavbtn" to="/womens">Womens <i className="fa fa-caret-down"></i></Link>
+        <Link className="subnavbtn" to="/womens" onClick={() => setSelectedCategory("womens")}>Womens <i className="fa fa-caret-down"></i></Link>
         <div className="subnav-content">
             <Link to="/womens/tops">Tops</Link>
             <Link to="/womens/bottoms">Bottoms</Link>
@@ -78,6 +78,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/productlist" element={<ProductList category={selectedCategory}/>} />
+          <Route path="/mens" element={<ProductList category="mens"/>} />
+          <Route path="/womens" element={<ProductList category="womens"/>} />
         </Routes>
     </div>
   );
