@@ -28,7 +28,7 @@ header {
 }
 
 .logo {
-  font-size: 60px;
+  font-size: 80px;
 }
 
 .navbar {
@@ -141,7 +141,8 @@ button:hover {
 }
 
 .SummerImage {
-  height: 5
+  height: 5;
+  padding: 50px;
 }
 
 .register {
