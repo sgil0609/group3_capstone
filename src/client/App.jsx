@@ -4,6 +4,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import ProductList from "./components/ProductList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -49,7 +50,7 @@ const SubNavAccount = () => {
         <Link className="subnavbtn" to="/login">My Account <i className="fa fa-caret-down"></i></Link>
         <div className="subnav-content">
             <Link to="/login">Login</Link>
-            <Link to="/login">Register</Link>
+            <Link to="/register">Register</Link>
         </div>
     </div>
   );
@@ -73,7 +74,9 @@ function App() {
           </div>
         </header>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/productlist" element={<ProductList category={selectedCategory}/>} />
         </Routes>
     </div>

@@ -134,3 +134,59 @@ button {
 button:hover {
   background-color: palegreen;
 }
+
+.SummerImage {
+  height: 5
+}
+
+.register {
+  width: 540px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  color: red;
+}
+
+.register h2 {
+  text-align: center;
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register form div {
+  margin-bottom: 15px;
+}
+
+.register label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.register input {
+  width: 95%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.register button {
+  padding: 10px 20px;
+  background-color: pink;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register button:hover {
+  background-color: palevioletred;
+}
+
+.register p {
+  margin-top: 10px;
+}
