@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-    // Create the first user
+
     const user1 = await prisma.user.create({
         data: {
             email: "jane.doe@example.com",
@@ -55,34 +55,119 @@ async function main() {
         }
     });
 
-    // Common product category and product creation
-    const category = await prisma.product_Category.create({
+    const womenTops = await prisma.product_Category.create({
         data: {
-            name: "Electronics",
-            description: "High-tech gadgets"
+            name: "Women Tops",
+            description: "Womens Top clothing"
         }
     });
 
-    const product = await prisma.product.create({
+    const womenPants = await prisma.product_Category.create({
         data: {
-            name: "Smartphone",
-            description: "Latest model smartphone with advanced features",
-            stock: 100,
-            price: 999.99,
-            productCategoryId: category.id
+            name: "Women Pants",
+            description: "Women Pants"
+        }
+    });
+
+    const womenShoes = await prisma.product_Category.create({
+        data: {
+            name: "Women Shoes",
+            description: "Women Shoes"
+        }
+    });
+
+    const menShirts = await prisma.product_Category.create({
+        data: {
+            name: "Men T-Shirts",
+            description: "Men T-shirts"
+        }
+    });
+
+    const menPants = await prisma.product_Category.create({
+        data: {
+            name: "Men Pants",
+            description: "Men Pants"
+        }
+    });
+
+    const menShoes = await prisma.product_Category.create({
+        data: {
+            name: "Men Shoes",
+            description: "Men Shoes"
+        }
+    });
+
+
+    const womenTopsProduct = await prisma.product.create({
+        data: {
+            name: "Dinosaur Tank Top",
+            description: "Comfy Tank Top with dinosaur",
+            stock: 10,
+            price: 29.99,
+            productCategoryId: womenTops.id 
+        }
+    });
+
+    const womenPantsProduct = await prisma.product.create({
+        data: {
+            name: "Bell Bottom Jeans",
+            description: "70 style jeans",
+            stock: 10,
+            price: 29.99,
+            productCategoryId: womenPants.id 
+        }
+    });
+
+    const womenShoesProduct = await prisma.product.create({
+        data: {
+            name: "Ugg Boots",
+            description: "Comfy UGG boots",
+            stock: 10,
+            price: 29.99,
+            productCategoryId: womenShoes.id 
+        }
+    });
+
+    const menShirtProduct = await prisma.product.create({
+        data: {
+            name: "New York Yankees Retro",
+            description: "1970 themed Yankee tshirt",
+            stock: 10,
+            price: 29.99,
+            productCategoryId: menShirts.id 
+        }
+    });
+
+    const menPantProduct = await prisma.product.create({
+        data: {
+            name: "Levi 501",
+            description: "Comfy Levi Jeans",
+            stock: 10,
+            price: 29.99,
+            productCategoryId: menPants.id 
+        }
+    });
+
+    const menShoeProduct = await prisma.product.create({
+        data: {
+            name: "Air Force Ones",
+            description: "Air Force Ones",
+            stock: 10,
+            price: 29.99,
+            productCategoryId: menShoes.id 
         }
     });
 
     // Create a full transaction order for user1
     const fullOrder = await prisma.order.create({
         data: {
-            total: product.price,
+            total: menShoeProduct.price,
             status: "Completed",
             userId: user1.id,
             order_items: {
                 create: {
-                    productId: product.id,
-                    unit_price: product.price,
+                    productId: menShoeProduct.id,
+                    unit_price: menShoeProduct.price,
                     quantity: 1
                 }
             },
@@ -100,13 +185,13 @@ async function main() {
     // Create an order in progress for user2
     const inProgressOrder = await prisma.order.create({
         data: {
-            total: product.price * 2,  // Example of a different order size
+            total: menPantProduct.price * 2,  // Example of a different order size
             status: "In Progress",
             userId: user2.id,
             order_items: {
                 create: {
-                    productId: product.id,
-                    unit_price: product.price,
+                    productId: menPantProduct.id,
+                    unit_price: menPantProduct.price,
                     quantity: 2  // Assuming a different quantity for demonstration
                 }
             },
