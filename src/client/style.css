@@ -140,11 +140,6 @@ button:hover {
   background-color: palegreen;
 }
 
-.SummerImage {
-  height: 5;
-  padding: 50px;
-}
-
 .register {
   width: 540px;
   margin: auto;
@@ -195,4 +190,29 @@ button:hover {
 
 .register p {
   margin-top: 10px;
+}
+
+.home {
+  display: flex;
+  margin-left: 60px;
+  flex-direction: column;
+}
+
+.top-image {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.side-2 {
+  display: flex;
+}
+
+.side-2 div {
+  margin-right: 40px;
+}
+
+.side-2 img {
+  width: 100%;
+  height: auto;
+  max-width: 680px;
 }
