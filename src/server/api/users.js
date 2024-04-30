@@ -1,14 +1,15 @@
 const express = require("express");
 const userRouter = express.Router();
 const prisma = require("../db/client");
+const verify = require("../middleware/util.js");
 
 const { createUser, getUser } = require("../db");
 
 const jwt = require("jsonwebtoken");
 
-const { verifyToken } = require("../middleware/authMiddleware.js");
+const { verifyToken } = require("../middleware/util.js");
 
-userRouter.get("/", async (req, res, next) => {
+userRouter.get("/", verify, async (req, res, next) => {
   try {
     const users = await prisma.user.findMany();
 
