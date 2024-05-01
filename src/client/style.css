@@ -85,12 +85,41 @@ header {
 .product-list {
   margin-top: 20px;
   padding: 20px;
+  display: flex;
+  font-family: Georgia;
+  border-radius: 8px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1000px;
+  gap: 20px;
+}
+
+.product-box {
+  padding: 20px;
   font-family: Georgia;
   border: 1px solid #ccc;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
+  width: calc(33.33% - 20px);
+}
+
+.product-box img {
+  width: 100%;
+  height: auto;
+}
+
+.product-box h3 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.product-box p {
+  margin-top: 5px;
+}
+
+.product {
+flex-basis: calc(30% - 20px);
+margin-right: 20px;
+margin-bottom: 20px;
 }
 
 .login {
