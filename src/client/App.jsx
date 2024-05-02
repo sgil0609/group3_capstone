@@ -6,11 +6,15 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
-import { SubNavHome, SubNavMens, SubNavWomens, SubNavAccount } from "./components/Navbar";
+import {
+  SubNavHome,
+  SubNavMens,
+  SubNavWomens,
+  SubNavAccount,
+} from "./components/NavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
-
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -33,7 +37,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/productlist" element={<ProductList category={selectedCategory} />} />
+        <Route
+          path="/productlist"
+          element={<ProductList category={selectedCategory} />}
+        />
         <Route path="/mens" element={<ProductList category="mens" />} />
         <Route path="/womens" element={<ProductList category="womens" />} />
         <Route path="/product/:id/details" element={<ProductDetails />} />
