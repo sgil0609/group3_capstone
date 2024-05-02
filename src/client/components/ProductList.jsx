@@ -27,9 +27,10 @@ const ProductList = () => {
         <div key={product.id} className="product-box">
           <Link to={`/products/${product.id}`}>
           <img src={product.image} alt={product.name} />
+          </Link>
           <h3>{product.name}</h3>
           <p>${product.price}</p> 
-          </Link>
+          
         </div>
       ))}
     </div>
