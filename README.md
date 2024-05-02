@@ -4,7 +4,7 @@ Fork and Clone the repository.
 
 The following below is assumed that you have npm on your machine.  If you do not, please do the following:
 
-After you have opened the folder in your IDE of choice, we will set it up.  First, we must verify that we have Node.js and a PostgreSQL installed on our machine.  If you do not, following the instructions for [Node.js] (https://nodejs.org/en/) and for [PostresSQL] (https://www.postgresql.org/).  Now we will get Prisma installed using [Prisma](https://www.prisma.io/docs/getting-started)
+After you have opened the folder in your IDE of choice, we will set it up.  First, we must verify that we have Node.js and a PostgreSQL installed on our machine.  If you do not, following the instructions for [Node.js](https://nodejs.org/en/) and for [PostresSQL](https://www.postgresql.org/).  Now we will get Prisma installed using [Prisma](https://www.prisma.io/docs/getting-started)
 
 As a first step, create a project directory and navigate into it:
 ```bash
