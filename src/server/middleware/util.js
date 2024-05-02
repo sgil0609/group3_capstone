@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken");
+
 async function verify(req, res, next) {
   const bearer = req.headers.authorization;
 
@@ -6,7 +8,6 @@ async function verify(req, res, next) {
     return;
   }
   //only extract token from header
-  //bearer = ["Bearer asldkf4g56"]
   const [_, token] = bearer.split(" ");
   //const token = bearer.slice(7) ;
   if (!token) {

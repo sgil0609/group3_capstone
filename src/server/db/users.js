@@ -48,15 +48,11 @@ const getUser = async ({ email, password }) => {
 
 const getUserByEmail = async (email) => {
   try {
-    const {
-      rows: [user],
-    } = await prisma.query(
-      `
-        SELECT * 
-        FROM users
-        WHERE email=$1;`,
-      [email]
-    );
+    const user = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
 
     if (!user) {
       return;
