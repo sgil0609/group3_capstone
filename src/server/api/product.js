@@ -70,4 +70,35 @@ productRouter.delete("/delete/:id", verify, async (req, res) => {
   }
 });
 
+productRouter.patch('/:id', async (req, res) => {
+  const productId = parseInt(req.params.id);
+  const { name, description, price, stock } = req.body;
+
+  try {
+      const product = await prisma.product.findUnique({
+          where: { id: productId }
+      });
+
+      if (!product) {
+          return res.status(404).json({ message: "Product not found" });
+      }
+
+      const updatedProduct = await prisma.product.update({
+          where: { id: productId },
+          data: {
+              name, 
+              description, 
+              price: parseFloat(price), 
+              stock: parseInt(stock)
+          }
+      });
+
+      res.status(200).json(updatedProduct);
+  } catch (error) {
+      console.error("Failed to update product:", error);
+      res.status(500).json({ message: "Failed to update product" });
+  }
+});
+
+
 module.exports = productRouter;
