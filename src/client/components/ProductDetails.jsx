@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
-const ProductDetails = () => {
-  const { id } = useParams(); // Use destructuring to get 'id' from URL params
+const ProductDetails = ({ setCartItems, cartItems }) => {
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -12,14 +12,29 @@ const ProductDetails = () => {
         if (!response.ok) {
           throw new Error("Failed to fetch product details");
         }
-        const data = await response.json();
-        setProduct(data);
+
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const data = await response.json();
+          setProduct(data);
+        } else {
+          throw new Error("Invalid response: not JSON");
+        }
       } catch (error) {
         console.error(error);
       }
     };
     fetchProductDetails();
-  }, [id]); // Fetch details whenever 'id' changes
+  }, [id]);
+
+  const handleAddToCart = (product) => {
+    if (product) {
+      console.log(cartItems);
+      let newCartItems = [...cartItems];
+      newCartItems.push(product);
+      setCartItems(newCartItems);
+    }
+  };
 
   if (!product) {
     return <div>Loading...</div>;
@@ -31,6 +46,7 @@ const ProductDetails = () => {
       <h2>{product.name}</h2>
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
+      <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
     </div>
   );
 };

@@ -15,9 +15,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
+import Cart from "./components/cart";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [cartItems, setCartItems] = useState([0]);
 
   return (
     <div>
@@ -25,22 +27,31 @@ function App() {
         <div className="logo">SADD</div>
         <div className="navbar">
           <SubNavHome />
-          <SubNavMens onClick={() => setSelectedCategory("mens")} />
-          <SubNavWomens onClick={() => setSelectedCategory("womens")} />
+          <SubNavMens setSelectedCategory={setSelectedCategory} />
+          <SubNavWomens setSelectedCategory={setSelectedCategory} />
           <SubNavAccount />
           <Link className="subnavbtn" to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
         </div>
+        Your cart contains {cartItems.length} items
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/productlist"element={<ProductList category={selectedCategory} />} />
-        <Route path="/product/:id/details" element={<ProductDetails />} />
-        <Route path="/mens" element={<ProductList selectedCategory="mens" />} />
-        <Route path="/womens" element={<ProductList selectedCategory="womens" />} />
+        <Route
+          path="/productlist"
+          element={<ProductList category={selectedCategory} />}
+        />
+        <Route path="/mens" element={<ProductList category="mens" />} />
+        <Route path="/womens" element={<ProductList category="womens" />} />
+        <Route
+          path="/product/:id/details"
+          element={
+            <ProductDetails cartItems={cartItems} setCartItems={setCartItems} />
+          }
+        />
       </Routes>
     </div>
   );
