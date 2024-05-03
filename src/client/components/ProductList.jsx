@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -18,6 +20,7 @@ const ProductList = () => {
         console.error(error);
       }
     };
+
     fetchProducts();
   }, []);
 
@@ -26,12 +29,11 @@ const ProductList = () => {
     <div className="product-list">
       {products.map((product) => (
         <div key={product.id} className="product-box">
-          <Link to={`/products/${product.id}`}>
-          <img src={product.image} alt={product.name} />
+          <Link to={`/product/${product.id}/details`}>
+            <img src={product.image} alt={product.name} />
           </Link>
           <h3>{product.name}</h3>
-          <p>${product.price}</p> 
-          
+          <p>${product.price}</p>
         </div>
       ))}
     </div>

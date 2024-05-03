@@ -15,7 +15,7 @@ productRouter.get("/", async (req, res, next) => {
 });
 
 // Route to get a specific product by ID
-productRouter.get("/product/:id", async (req, res, next) => {
+productRouter.get("/:id", async (req, res, next) => {
   const productId = parseInt(req.params.id);
   try {
     const product = await prisma.product.findUnique({
