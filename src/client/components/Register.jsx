@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 
 const Register = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+
+  const handleFirstNameChange = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const handleLastNameChange = (e) => {
+    setLastName(e.target.value);
+  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -21,6 +31,8 @@ const Register = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          firstName,
+          lastName,
           email,
           password,
         }),
@@ -30,6 +42,8 @@ const Register = () => {
       if (!response.ok) {
         throw result;
       }
+      setFirstName("");
+      setLastName("");
       setEmail("");
       setPassword("");
     } catch (err) {
@@ -50,6 +64,24 @@ const Register = () => {
         rewards.
       </h4>
       <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="firstName">First Name:</label>
+          <input
+            type="text"
+            id="firstName"
+            value={firstName}
+            onChange={handleFirstNameChange}
+            required />
+        </div>
+        <div>
+          <label htmlFor="lastName">Last Name:</label>
+          <input
+            type="text"
+            id="lasttName"
+            value={lastName}
+            onChange={handleFirstNameChange}
+            required />
+        </div>
         <div>
           <label htmlFor="email">Email:</label>
           <input

@@ -21,6 +21,7 @@ const ProductList = () => {
     fetchProducts();
   }, []);
 
+
   return (
     <div className="product-list">
       {products.map((product) => (
