@@ -37,13 +37,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/productlist"
-          element={<ProductList category={selectedCategory} />}
-        />
-        <Route path="/mens" element={<ProductList category="mens" />} />
-        <Route path="/womens" element={<ProductList category="womens" />} />
+        <Route path="/productlist"element={<ProductList category={selectedCategory} />} />
         <Route path="/product/:id/details" element={<ProductDetails />} />
+        <Route path="/mens" element={<ProductList selectedCategory="mens" />} />
+        <Route path="/womens" element={<ProductList selectedCategory="womens" />} />
       </Routes>
     </div>
   );
