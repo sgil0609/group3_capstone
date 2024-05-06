@@ -45,6 +45,7 @@ productRouter.post("/add", verify, async (req, res) => {
         price: parseFloat(price),
         stock: parseInt(stock, 10),
         productCategoryId: parseInt(productCategoryId, 10),
+        imageUrl 
       },
     });
     res.status(201).json(newProduct);

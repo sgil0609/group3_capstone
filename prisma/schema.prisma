@@ -48,6 +48,7 @@ model Product {
   description         String   
   stock               Decimal
   price               Decimal
+  imageUrl            String?   
   created_at          DateTime          @default(now())
   modified_at         DateTime          @updatedAt
   productCategoryId   Int
