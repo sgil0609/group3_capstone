@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-const ProductList = () => {
+const ProductList = ({selectedCategory}) => {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
 
@@ -14,16 +14,19 @@ const ProductList = () => {
           throw new Error("Failed to fetch product");
         }
         const data = await response.json();
-        console.log(data);
-        setProducts(data);
+        const filtered = data.filter(p => p.productCategoryId == selectedCategory);
+        console.log(selectedCategory);
+        console.log(filtered);
+        setProducts(filtered);
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchProducts();
-  }, []);
+  }, [selectedCategory]);
 
+  // use params - to fix code and eliminate the long code (ie: in app.jsx file use product:id/category?)
 
   return (
     <div className="product-list">
