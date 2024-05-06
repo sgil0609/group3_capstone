@@ -34,7 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register />} />npx prisma migrate dev --name add_image_url_to_products
         <Route path="/productlist"element={<ProductList category={selectedCategory} />} />
         <Route path="/product/:id/details" element={<ProductDetails cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="/mens" element={<ProductList selectedCategory="mens" />} />

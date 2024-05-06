@@ -42,7 +42,7 @@ const ProductDetails = ({ setCartItems, cartItems }) => {
 
   return (
     <div className="product-details">
-      <img src={product.image} alt={product.name} />
+      <img src={product.imageUrl} alt="Product Image"></img>
       <h2>{product.name}</h2>
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>

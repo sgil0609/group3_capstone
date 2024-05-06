@@ -33,7 +33,7 @@ const ProductList = ({selectedCategory}) => {
       {products.map((product) => (
         <div key={product.id} className="product-box">
           <Link to={`/product/${product.id}/details`}>
-            <img src={product.image} alt={product.name} />
+            <img src={product.imageUrl} alt="Product Image"></img>
           </Link>
           <h3>{product.name}</h3>
           <p>${product.price}</p>
