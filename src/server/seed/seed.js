@@ -1,4 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
+const { link } = require('../api/product');
 const prisma = new PrismaClient();
 
 async function main() {
@@ -104,7 +105,8 @@ async function main() {
             description: "Comfy Tank Top with dinosaur",
             stock: 10,
             price: 29.99,
-            productCategoryId: womenTops.id 
+            productCategoryId: womenTops.id,
+            imageUrl:"https://media.kohlsimg.com/is/image/kohls/3591469?wid=805&hei=805&op_sharpen=1"
         }
     });
 
@@ -114,7 +116,8 @@ async function main() {
             description: "70 style jeans",
             stock: 10,
             price: 29.99,
-            productCategoryId: womenPants.id 
+            productCategoryId: womenPants.id,
+            imageUrl:"https://m.media-amazon.com/images/I/71jIWd7As8L._AC_SY879_.jpg" 
         }
     });
 
@@ -124,7 +127,8 @@ async function main() {
             description: "Comfy UGG boots",
             stock: 10,
             price: 29.99,
-            productCategoryId: womenShoes.id 
+            productCategoryId: womenShoes.id,
+            imageUrl:"https://m.media-amazon.com/images/I/71IlZQJtV1L._AC_SY695_.jpg" 
         }
     });
 
@@ -134,7 +138,8 @@ async function main() {
             description: "1970 themed Yankee tshirt",
             stock: 10,
             price: 29.99,
-            productCategoryId: menShirts.id 
+            productCategoryId: menShirts.id,
+            imageUrl:"https://www.pacsun.com/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw49de0f74/product_images/0097600540020NEW_00_010.jpg?sw=2000" 
         }
     });
 
@@ -144,7 +149,8 @@ async function main() {
             description: "Comfy Levi Jeans",
             stock: 10,
             price: 29.99,
-            productCategoryId: menPants.id 
+            productCategoryId: menPants.id,
+            imageUrl:"https://m.media-amazon.com/images/I/8101SWb21VL._AC_SY879_.jpg" 
         }
     });
 
@@ -154,7 +160,8 @@ async function main() {
             description: "Air Force Ones",
             stock: 10,
             price: 29.99,
-            productCategoryId: menShoes.id 
+            productCategoryId: menShoes.id,
+            imageUrl:"https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/350e7f3a-979a-402b-9396-a8a998dd76ab/air-force-1-07-mens-shoes-jBrhbr.png" 
         }
     });
 
