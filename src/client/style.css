@@ -82,7 +82,12 @@ header {
   margin-left: 10px;
 }
 
+.product-details {
+    padding: 40px;
+}
+
 .product-image {
+  padding: 20px;
   max-width: 300px;
 }
 
