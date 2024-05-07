@@ -78,6 +78,21 @@ header {
   background-color: red;
 }
 
+.cart-count {
+  margin-left: 10px;
+}
+
+.product-image {
+  max-width: 300px;
+}
+
+.add-to-cart {
+  font-size: 14px;
+  padding: 5px 10px;
+  width: 300px;
+  height: auto;
+}
+
 #comp-ing {
   width: 250px;
 }

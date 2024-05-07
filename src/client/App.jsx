@@ -28,8 +28,8 @@ function App() {
           <Link className="subnavbtn" to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
+          <span className="cart-count"> {cartItems.length} items </span>
         </div>
-        Your cart contains {cartItems.length} items
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
