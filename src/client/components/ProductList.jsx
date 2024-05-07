@@ -36,7 +36,7 @@ const ProductList = ({selectedCategory}) => {
             <img src={product.imageUrl} alt="Product Image"></img>
           </Link>
           <h3>{product.name}</h3>
-          <p>${product.price}</p>
+          {/* <p>${product.price}</p> */}
         </div>
       ))}
     </div>
