@@ -42,11 +42,11 @@ const ProductDetails = ({ setCartItems, cartItems }) => {
 
   return (
     <div className="product-details">
-      <img src={product.imageUrl} alt="Product Image"></img>
+      <img src={product.imageUrl} alt="Product Image" className="product-image"></img>
       <h2>{product.name}</h2>
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
-      <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+      <button onClick={() => handleAddToCart(product)} className="add-to-cart">Add to Cart</button>
     </div>
   );
 };
