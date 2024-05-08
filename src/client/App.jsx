@@ -10,7 +10,7 @@ import { SubNavHome,SubNavMens,SubNavWomens,SubNavAccount } from "./components/N
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
-import Cart from "./components/cart";
+import cart from "./components/cart";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -25,9 +25,7 @@ function App() {
           <SubNavMens setSelectedCategory={setSelectedCategory} />
           <SubNavWomens setSelectedCategory={setSelectedCategory} />
           <SubNavAccount />
-          <Link className="subnavbtn" to="/cart">
-            <FontAwesomeIcon icon={faShoppingCart} />
-          </Link>
+          <Link className="subnavbtn" to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
           <span className="cart-count"> {cartItems.length} items </span>
         </div>
       </header>
@@ -45,6 +43,7 @@ function App() {
         <Route path="/womens/tops" element={<ProductList selectedCategory="1" />} />
         <Route path="/womens/bottoms" element={<ProductList selectedCategory="2" />} />
         <Route path="/womens/shoes" element={<ProductList selectedCategory="3" />} />
+        <Route path="/cart" element={<cart />} />
       </Routes>
     </div>
   );
