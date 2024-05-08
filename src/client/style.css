@@ -84,6 +84,11 @@ header {
 
 .product-details {
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
 }
 
 .product-image {
@@ -96,6 +101,7 @@ header {
   padding: 5px 10px;
   width: 300px;
   height: auto;
+  margin-top: 20px;
 }
 
 #comp-ing {
@@ -137,9 +143,9 @@ header {
 }
 
 .product {
-flex-basis: calc(30% - 20px);
-margin-right: 20px;
-margin-bottom: 20px;
+  flex-basis: calc(30% - 20px);
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .login {
