@@ -13,6 +13,7 @@ const Cart = ({ cartItems, setCartItems }) => {
     setCartItems([]);
     alert("Checkout completed!");
   };
+  console.log(cartItems);
 
   return (
     <div>
