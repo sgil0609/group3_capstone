@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Login = () => {
+const Login = ( {setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -30,6 +30,8 @@ const Login = () => {
       if (!response.ok) {
         throw result;
       }
+      setMessage("Login successful!");
+      setUser(result.user);
       setEmail("");
       setPassword("");
     } catch (err) {
