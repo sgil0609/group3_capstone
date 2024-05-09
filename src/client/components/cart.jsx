@@ -4,7 +4,7 @@ const Cart = ({ cartItems, setCartItems }) => {
   const calculateTotalCost = () => {
     let total = 0;
     cartItems.forEach((item) => {
-      total += item.price;
+      total += Number(item.price);
     });
     return total;
   };
