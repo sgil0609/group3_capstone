@@ -88,7 +88,6 @@ header {
     flex-direction: column;
     align-items: center;
     text-align: center;
-
 }
 
 .product-image {
@@ -112,12 +111,11 @@ header {
   margin-top: 20px;
   padding: 20px;
   display: flex;
-  font-family: Georgia;
-  border-radius: 8px;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   max-width: 1000px;
   gap: 20px;
+  margin: 0 auto;
 }
 
 .product-box {

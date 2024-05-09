@@ -79,7 +79,7 @@ const Register = () => {
             type="text"
             id="lasttName"
             value={lastName}
-            onChange={handleFirstNameChange}
+            onChange={handleLastNameChange}
             required />
         </div>
         <div>
