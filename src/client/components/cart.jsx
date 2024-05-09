@@ -10,7 +10,6 @@ const Cart = ({ cartItems, setCartItems }) => {
   };
 
   const handleCheckout = () => {
-    
     setCartItems([]);
     alert("Checkout completed!");
   };
@@ -38,4 +37,3 @@ const Cart = ({ cartItems, setCartItems }) => {
 };
 
 export default Cart;
-
