@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const Register = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -25,14 +25,14 @@ const Register = () => {
 
   const register = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/users/register", {
+      const response = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          firstName,
-          lastName,
+          first_name,
+          last_name,
           email,
           password,
         }),
@@ -69,18 +69,20 @@ const Register = () => {
           <input
             type="text"
             id="firstName"
-            value={firstName}
+            value={first_name}
             onChange={handleFirstNameChange}
-            required />
+            required
+          />
         </div>
         <div>
           <label htmlFor="lastName">Last Name:</label>
           <input
             type="text"
-            id="lasttName"
-            value={lastName}
+            id="lastName"
+            value={last_name}
             onChange={handleLastNameChange}
-            required />
+            required
+          />
         </div>
         <div>
           <label htmlFor="email">Email:</label>
