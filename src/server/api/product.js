@@ -36,7 +36,7 @@ productRouter.get("/:id", async (req, res, next) => {
 
 //add a product only if verified(only logged in user)
 productRouter.post("/add", verify, async (req, res) => {
-  const { name, description, price, stock, productCategoryId } = req.body;
+  const { name, description, price, stock, productCategoryId, imageUrl } = req.body;
   try {
     const newProduct = await prisma.product.create({
       data: {
@@ -45,7 +45,7 @@ productRouter.post("/add", verify, async (req, res) => {
         price: parseFloat(price),
         stock: parseInt(stock, 10),
         productCategoryId: parseInt(productCategoryId, 10),
-        imageUrl 
+        imageUrl,
       },
     });
     res.status(201).json(newProduct);
