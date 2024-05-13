@@ -269,3 +269,22 @@ button:hover {
   height: auto;
   max-width: 680px;
 }
+
+.cart-item img {
+  width: 10%;
+  height: auto;
+  margin-right: 15%;
+}
+
+.cart-item {
+  display: flex;
+  
+}
+
+.remove-icon {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+
+
