@@ -6,12 +6,12 @@ const productRouter = require("./product");
 const usersRouter = require("./users");
 const authRouter = require("./auth");
 const productCategory = require("./category");
-
+const cartRouter = require("./cart");
 
 router.use("/product", productRouter);
 router.use("/users", usersRouter);
 router.use("/auth", authRouter);
 router.use("/category", productCategory);
-// cart router
+router.use("/cart", cartRouter);
 
 module.exports = router;
