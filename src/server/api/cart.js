@@ -30,4 +30,40 @@ cartRouter.post('/add-to-cart', async (req, res) => {
     }
 });
 
+cartRouter.put("/users/:userId/orders/complete", async (req, res) => {
+    const { userId } = req.params;
+  
+    try {
+      // Find all orders for the specific user with status "PENDING"
+      const pendingOrders = await prisma.order.findMany({
+        where: {
+          userId: parseInt(userId),
+          status: "PENDING"
+        }
+      }); 
+  
+      // If there are no pending orders for the user, return a success message
+      if (pendingOrders.length === 0) {
+        return res.json({ message: "No pending orders found for the user" });
+      }
+  
+      // Update the status of all pending orders to "Completed"
+      const updatedOrders = await Promise.all(pendingOrders.map(order => {
+        return prisma.order.update({
+          where: {
+            id: order.id
+          },
+          data: {
+            status: "Completed"
+          }
+        });
+      }));
+  
+      res.json({ message: "All pending orders for the user have been marked as completed" });
+    } catch (error) {
+      console.error("Error updating order statuses:", error);
+      res.status(500).json({ error: "Failed to update order statuses" });
+    }
+  });
+
 module.exports = cartRouter;
