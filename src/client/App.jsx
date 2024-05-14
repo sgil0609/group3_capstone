@@ -15,9 +15,13 @@ import Cart from "./components/cart";
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [cartItems, setCartItems] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
   const [user, setUser] = useState(null);
 
-  
+  const updateCartCount = (items) => {
+    const totalCount = items.reduce((total, item) => total + Number(item.quantity), 0);
+    setCartCount(totalCount);
+  };
 
   return (
     <div>
@@ -31,7 +35,7 @@ function App() {
           <Link className="subnavbtn" to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
-          <span className="cart-count"> {cartItems.length} items </span>
+          <span className="cart-count"> {cartCount} items </span>
         </div>
       </header>
       <Routes>
@@ -39,7 +43,7 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser}/>} />
         <Route path="/register" element={<Register />} />
         <Route path="/productlist" element={<ProductList category={selectedCategory} />} />
-        <Route path="/product/:id/details" element={<ProductDetails cartItems={cartItems} setCartItems={setCartItems} />} />
+        <Route path="/product/:id/details" element={<ProductDetails cartItems={cartItems} setCartItems={setCartItems} updateCartCount={updateCartCount} />} />
         <Route path="/mens" element={<ProductList selectedCategory="mens" />} />
         <Route
           path="/mens/tops"
@@ -69,7 +73,7 @@ function App() {
           path="/womens/shoes"
           element={<ProductList selectedCategory="3" />}
         />
-        <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
+        <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} updateCartCount={updateCartCount} />} />
       </Routes>
     </div>
   );

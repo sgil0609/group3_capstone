@@ -270,21 +270,35 @@ button:hover {
   max-width: 680px;
 }
 
-.cart-item img {
-  width: 10%;
-  height: auto;
-  margin-right: 15%;
-}
-
 .cart-item {
   display: flex;
-  
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-item-image {
+  width: 130px; 
+  height: auto;
+  margin-right: 40px;
+}
+
+.cart-item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+.cart-item-quantity {
+  width: 50px; 
 }
 
 .remove-icon {
   cursor: pointer;
-  margin-left: 10px;
+  color: red; 
 }
-
-
 
