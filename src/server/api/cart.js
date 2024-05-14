@@ -40,7 +40,7 @@ cartRouter.put("/users/:userId/orders/complete", async (req, res) => {
           userId: parseInt(userId),
           status: "PENDING"
         }
-      });
+      }); 
   
       // If there are no pending orders for the user, return a success message
       if (pendingOrders.length === 0) {
@@ -65,5 +65,5 @@ cartRouter.put("/users/:userId/orders/complete", async (req, res) => {
       res.status(500).json({ error: "Failed to update order statuses" });
     }
   });
-  
+
 module.exports = cartRouter;
