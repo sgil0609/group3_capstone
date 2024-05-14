@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
-const ProductDetails = ({ setCartItems, cartItems }) => {
+const ProductDetails = ({ setCartItems, cartItems, updateCartCount }) => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -29,10 +29,17 @@ const ProductDetails = ({ setCartItems, cartItems }) => {
 
   const handleAddToCart = (product) => {
     if (product) {
-      console.log(cartItems);
       let newCartItems = [...cartItems];
-      newCartItems.push(product);
+      const existingItem = newCartItems.find(item => item.id === product.id);
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        newCartItems.push({ ...product, quantity: 1 }); // Ensure to add with quantity 1 if not specified
+      }
+
       setCartItems(newCartItems);
+      updateCartCount(newCartItems);
     }
   };
 

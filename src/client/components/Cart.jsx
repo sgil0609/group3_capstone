@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const Cart = ({ cartItems, setCartItems }) => {
+const Cart = ({ cartItems, setCartItems, updateCartCount }) => {
   const calculateTotalCost = () => {
     if (cartItems.length === 0) {
       return 0;
@@ -22,6 +22,7 @@ const Cart = ({ cartItems, setCartItems }) => {
   const handleRemoveItem = (id) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedCartItems);
+    updateCartCount(updatedCartItems);
   };
 
   const handleQuantityChange = (id, newQuantity) => {
@@ -32,10 +33,12 @@ const Cart = ({ cartItems, setCartItems }) => {
       return item;
     });
     setCartItems(updatedCartItems);
+    updateCartCount(updatedCartItems);
   };
 
   const handleCheckout = () => {
     setCartItems([]);
+    updateCartCount([]);
     alert("Checkout completed!");
   };
 
@@ -48,21 +51,18 @@ const Cart = ({ cartItems, setCartItems }) => {
         <div>
           <ul>
             {cartItems.map((item) => (
-              <li key={item.id}>
-                <div className="cart-item">
-                  
-                  <img src={item.imageUrl} alt="item.name" />
-
-                  <div>
-                    <p>Price: ${item.price}</p>
+              <li key={item.id} className="cart-item">
+                <img src={item.imageUrl} alt={item.name} className="cart-item-image" />
+                <div className="cart-item-details">
+                  <p>Price: ${item.price}</p>
+                  <div className="cart-item-actions">
                     <label htmlFor={`quantity-${item.id}`}>Qty:</label>
                     <input
                       type="number"
                       id={`quantity-${item.id}`}
                       value={item.quantity}
-                      onChange={(e) =>
-                        handleQuantityChange(item.id, e.target.value)
-                      }
+                      onChange={(e) => handleQuantityChange(item.id, Number(e.target.value))}
+                      className="cart-item-quantity"
                     />
                     <FontAwesomeIcon
                       icon={faTrash}
