@@ -22,6 +22,7 @@ const ProductList = ({ selectedCategories = [] }) => {
     };
 
     fetchProducts();
+
   }, [selectedCategories]);
 
   return (
