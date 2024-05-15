@@ -44,7 +44,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/productlist" element={<ProductList category={selectedCategory} />} />
         <Route path="/product/:id/details" element={<ProductDetails cartItems={cartItems} setCartItems={setCartItems} updateCartCount={updateCartCount} />} />
-        <Route path="/mens" element={<ProductList selectedCategory="mens" />} />
+        <Route path="/mens" element={<ProductList selectedCategories={["4", "5","6"]} />} />
         <Route
           path="/mens/tops"
           element={<ProductList selectedCategory="4" />}
@@ -59,7 +59,7 @@ function App() {
         />
         <Route
           path="/womens"
-          element={<ProductList selectedCategory="womens" />}
+          element={<ProductList selectedCategories={["1", "2","3"]} />} />
         />
         <Route
           path="/womens/tops"
