@@ -26,8 +26,6 @@ const ProductList = ({selectedCategory}) => {
     fetchProducts();
   }, [selectedCategory]);
 
-  // use params - to fix code and eliminate the long code (ie: in app.jsx file use product:id/category?)
-
   return (
     <div className="product-list">
       {products.map((product) => (
