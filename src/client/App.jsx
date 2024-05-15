@@ -15,13 +15,7 @@ import Cart from "./components/Cart";
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [cartItems, setCartItems] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
   const [user, setUser] = useState(null);
-
-  const updateCartCount = (items) => {
-    const totalCount = items.reduce((total, item) => total + Number(item.quantity), 0);
-    setCartCount(totalCount);
-  };
 
   return (
     <div>
@@ -35,7 +29,7 @@ function App() {
           <Link className="subnavbtn" to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
-          <span className="cart-count"> {cartCount} items </span>
+          <span className="cart-count"> {cartItems.length} items </span>
         </div>
       </header>
       <Routes>
