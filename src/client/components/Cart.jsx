@@ -83,3 +83,4 @@ const Cart = ({ cartItems, setCartItems, updateCartCount }) => {
 };
 
 export default Cart;
+
