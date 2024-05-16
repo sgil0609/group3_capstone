@@ -35,7 +35,7 @@ const ProductDetails = ({ setCartItems, cartItems, updateCartCount }) => {
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
-        newCartItems.push({ ...product, quantity: 1 }); // Ensure to add with quantity 1 if not specified
+        newCartItems.push({ ...product, quantity: 1 });
       }
 
       setCartItems(newCartItems);

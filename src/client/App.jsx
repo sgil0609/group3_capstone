@@ -10,11 +10,12 @@ import { SubNavHome, SubNavMens, SubNavWomens, SubNavAccount } from "./component
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
-import Cart from "./components/Cart";
+import Cart from "./components/cart";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [cartItems, setCartItems] = useState([]);
+  const [cartCount, setCartCount] = useState(0); // Define cartCount state
   const [user, setUser] = useState(null);
 
   const updateCartCount = (items) => {
@@ -34,7 +35,7 @@ function App() {
           <Link className="subnavbtn" to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
-          <span className="cart-count"> {cartItems.length} items </span>
+          <span className="cart-count"> {cartCount} items </span> {/* Display cartCount */}
         </div>
       </header>
       <Routes>
