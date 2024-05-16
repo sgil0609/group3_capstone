@@ -190,7 +190,7 @@ button {
 }
 
 button:hover {
-  background-color: palegreen;
+  background-color: rgb(129, 101, 251);
 }
 
 .register {
@@ -238,7 +238,7 @@ button:hover {
 }
 
 .register button:hover {
-  background-color: palevioletred;
+  background-color: rgb(129, 101, 251);
 }
 
 .register p {
@@ -277,28 +277,45 @@ button:hover {
 }
 
 .cart-item-image {
-  width: 130px; 
+  width: 300px; 
   height: auto;
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 .cart-item-details {
   display: flex;
   flex-direction: column;
+  font-size: 18px;
 }
 
 .cart-item-actions {
   display: flex;
   align-items: center;
-  gap: 10px; 
+  gap: 15px; 
 }
 
 .cart-item-quantity {
-  width: 50px; 
+  width: 60px; 
+  font-size: 18px;
 }
 
 .remove-icon {
   cursor: pointer;
-  color: red; 
+  color: red;
+  font-size: 18px; 
 }
 
+.checkout-button {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 200px;
+}
+
+.checkout-button:hover {
+  background-color: rgb(129, 101, 251);
+}
