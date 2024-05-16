@@ -2,7 +2,7 @@ const prisma = require("./client");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-const createUser = async (first_name, last_name, email, password) => {
+const createUser = async (first_name, last_name, email, password, role) => {
   try {
     // Check if user already exists
     const existingUser = await prisma.user.findUnique({
@@ -20,6 +20,7 @@ const createUser = async (first_name, last_name, email, password) => {
         last_name,
         email,
         password: hashedPassword,
+        role,
       },
     });
     delete newUser.password;

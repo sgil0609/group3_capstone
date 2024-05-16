@@ -6,13 +6,13 @@ const { createUser, getUserByEmail } = require("../db/users");
 const jwt = require("jsonwebtoken");
 
 authRouter.post("/register", async (req, res) => {
-  const { email, password, first_name, last_name } = req.body;
+  const { email, password, first_name, last_name, role } = req.body;
 
   if (!email || !password) {
     return res.status(400).json({ msg: "Missing Email or Password!" });
   }
   try {
-    const user = await createUser(first_name, last_name, email, password);
+    const user = await createUser(first_name, last_name, email, password, role);
     const token = jwt.sign(
       { id: user.id, email: user.email },
       process.env.JWT_SECRET
