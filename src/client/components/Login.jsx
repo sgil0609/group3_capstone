@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-const Login = ( {setUser }) => {
+const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -26,17 +27,24 @@ const Login = ( {setUser }) => {
         }),
       });
       const result = await response.json();
-      setMessage(result.message);
+      setMessage(result.msg);
       if (!response.ok) {
         throw result;
       }
       setMessage("Login successful!");
       setUser(result.user);
+      setLoggedIn(true);
       setEmail("");
       setPassword("");
     } catch (err) {
       console.error(`${err.name}: ${err.message}`);
     }
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    setLoggedIn(false);
+    setMessage("");
   };
 
   const handleSubmit = (e) => {
@@ -46,30 +54,34 @@ const Login = ( {setUser }) => {
 
   return (
     <div className="login">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={handleEmailChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+      <h2>{isLoggedIn ? "" : "Login"}</h2>
+      {isLoggedIn ? (
+        <button onClick={handleLogout}>Logout</button>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={handlePasswordChange}
+              required
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      )}
       <p>{message}</p>
     </div>
   );
