@@ -17,6 +17,11 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [user, setUser] = useState(null);
 
+  const updateCartCount = (items) => {
+    const totalCount = items.reduce((total, item) => total + Number(item.quantity), 0);
+    setCartCount(totalCount);
+  };
+
   return (
     <div>
       <header>
