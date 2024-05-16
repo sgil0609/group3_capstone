@@ -10,7 +10,7 @@ import { SubNavHome, SubNavMens, SubNavWomens, SubNavAccount } from "./component
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
-import Cart from "./components/cart";
+import Cart from "./components/Cart";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
