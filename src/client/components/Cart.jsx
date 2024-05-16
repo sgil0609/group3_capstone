@@ -75,7 +75,7 @@ const Cart = ({ cartItems, setCartItems, updateCartCount }) => {
             ))}
           </ul>
           <div>Total: ${calculateTotalCost()}</div>
-          <button onClick={handleCheckout}>Checkout</button>
+          <button onClick={handleCheckout} className="checkout-button">Checkout</button>
         </div>
       )}
     </div>
