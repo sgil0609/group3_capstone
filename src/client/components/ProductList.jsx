@@ -24,6 +24,21 @@ const ProductList = ({ selectedCategories = [] }) => {
     fetchProducts();
   }, [selectedCategories]);
 
+  const deleteProduct = async (productId) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/product/delete/:id", {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        setProducts(products.filter(product => product.id !== productId));
+      } else {
+        throw new Error("Failed to delete product");
+      }
+    } catch (error) {
+      console.error("Failed to delete product", error);
+    }
+  };
+
   return (
     <div className="product-list">
       {products.map((product) => (
@@ -32,6 +47,7 @@ const ProductList = ({ selectedCategories = [] }) => {
             <img src={product.imageUrl} alt="Product" />
           </Link>
           <h3>{product.name}</h3>
+          <button onClick={() => deleteProduct(product.id)}>Delete</button>
         </div>
       ))}
     </div>
