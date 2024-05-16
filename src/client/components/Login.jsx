@@ -32,6 +32,7 @@ const Login = ({ setUser }) => {
         throw result;
       }
       setMessage("Login successful!");
+      
       setUser(result.user);
       setLoggedIn(true);
       setEmail("");
