@@ -11,6 +11,7 @@ const ProductList = ({ selectedCategories = [] }) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
+    
         const data = await response.json();
         const filtered = data.filter(product => selectedCategories.includes(product.productCategoryId.toString()));
         console.log(selectedCategories);
@@ -24,13 +25,19 @@ const ProductList = ({ selectedCategories = [] }) => {
     fetchProducts();
   }, [selectedCategories]);
 
-  const deleteProduct = async (productId) => {
+  const deleteProduct = async (id) => {
     try {
+
+      const token = localStorage.getItem("token");
+
       const response = await fetch("http://localhost:3000/api/product/delete/:id", {
         method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        }
       });
       if (response.ok) {
-        setProducts(products.filter(product => product.id !== productId));
+        setProducts(products.filter(product => product.id !== id));
       } else {
         throw new Error("Failed to delete product");
       }
