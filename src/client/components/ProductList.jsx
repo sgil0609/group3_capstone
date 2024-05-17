@@ -30,7 +30,7 @@ const ProductList = ({ selectedCategories = [] }) => {
 
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:3000/api/product/delete/:id", {
+      const response = await fetch(`http://localhost:3000/api/product/delete/${id}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,
