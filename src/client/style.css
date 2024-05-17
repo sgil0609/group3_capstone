@@ -24,7 +24,7 @@ header {
   color: red;
   padding: 10px 20px;
   padding-top: 20px;
-  /* position: relative; */
+  background-color: whitesmoke;
 }
 
 .logo {
@@ -34,8 +34,9 @@ header {
 .navbar {
   display: flex;
   align-items: center;
-  font-size: 18px;
+  font-size: 20px;
   font-family: Verdana;
+  background-color: whitesmoke;
 }
 
 .subnav {
@@ -187,11 +188,18 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+}
+
+.button {
+  width: 200px;
+  font-size: 20px;
 }
 
 button:hover {
   background-color: rgb(129, 101, 251);
 }
+
 
 .register {
   width: 540px;

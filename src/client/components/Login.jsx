@@ -33,6 +33,9 @@ const Login = ({ setUser }) => {
       }
       setMessage("Login successful!");
       
+      localStorage.setItem("token", result.token)
+      console.log("token equals", result.token);
+
       setUser(result.user);
       setLoggedIn(true);
       setEmail("");
@@ -57,7 +60,7 @@ const Login = ({ setUser }) => {
     <div className="login">
       <h2>{isLoggedIn ? "" : "Login"}</h2>
       {isLoggedIn ? (
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout} className="button">Logout</button>
       ) : (
         <form onSubmit={handleSubmit}>
           <div>
