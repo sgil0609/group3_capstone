@@ -3,6 +3,24 @@ const cartRouter = express.Router();
 const prisma = require("../db/client");
 cartRouter.use(express.json());
 
+cartRouter.get('/users/:userId/orders/pending', async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+      const pendingOrders = await prisma.order.findMany({
+          where: {
+              userId: parseInt(userId),
+              status: "PENDING"
+          }
+      });
+
+      res.json(pendingOrders);
+  } catch (error) {
+      console.error('Failed to retrieve pending orders:', error);
+      res.status(500).send('Failed to retrieve pending orders');
+  }
+});
+
 // POST endpoint to create an order
 cartRouter.post('/add-to-cart', async (req, res) => {
     const { userId, productId, total } = req.body;
