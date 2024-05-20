@@ -17,13 +17,26 @@ async function verify(req, res, next) {
 
   //is this token valid?
   try {
-    const user = jwt.verify(token, process.env.JWT_SECRET);
+    const secretKey = process.env.JWT_SECRET;
+    const user = jwt.verify(token, secretKey);
+
     req.user = user;
+
     console.log("req", req);
     next();
   } catch (error) {
-    res.status(401).send({ msg: "Invalid Token!" });
+    res.status(401).send({ msg: "Access Denied. Not Authorized!" });
   }
-}
+};
 
-module.exports = verify;
+const isAdmin = (req, res, next) => {
+  auth(req, res, () => {
+    if (req.user.isAdmin){
+      next();
+    }else{
+      res.status(403).send("Access Denied. Not Authorized!");
+    }
+  });
+};
+
+module.exports = {verify, isAdmin};
