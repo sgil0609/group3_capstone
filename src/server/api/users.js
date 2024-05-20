@@ -1,9 +1,8 @@
 const express = require("express");
 const userRouter = express.Router();
 const prisma = require("../db/client");
-const verify = require("../middleware/util.js");
 
-const { createUser, getUser } = require("../db");
+//const { createUser, getUser } = require("../db");
 
 const jwt = require("jsonwebtoken");
 

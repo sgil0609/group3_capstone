@@ -1,7 +1,7 @@
 const express = require("express");
 const productRouter = express.Router();
 const prisma = require("../db/client");
-const verify = require("../middleware/util");
+const { verify } = require("../middleware/util");
 
 // Route to get all products
 productRouter.get("/", async (req, res, next) => {
@@ -36,7 +36,8 @@ productRouter.get("/:id", async (req, res, next) => {
 
 //add a product only if verified(only logged in user)
 productRouter.post("/add", verify, async (req, res) => {
-  const { name, description, price, stock, productCategoryId, imageUrl } = req.body;
+  const { name, description, price, stock, productCategoryId, imageUrl } =
+    req.body;
   try {
     const newProduct = await prisma.product.create({
       data: {
@@ -71,35 +72,34 @@ productRouter.delete("/delete/:id", verify, async (req, res) => {
   }
 });
 
-productRouter.patch('/:id', async (req, res) => {
+productRouter.patch("/:id", async (req, res) => {
   const productId = parseInt(req.params.id);
   const { name, description, price, stock } = req.body;
 
   try {
-      const product = await prisma.product.findUnique({
-          where: { id: productId }
-      });
+    const product = await prisma.product.findUnique({
+      where: { id: productId },
+    });
 
-      if (!product) {
-          return res.status(404).json({ message: "Product not found" });
-      }
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
 
-      const updatedProduct = await prisma.product.update({
-          where: { id: productId },
-          data: {
-              name, 
-              description, 
-              price: parseFloat(price), 
-              stock: parseInt(stock)
-          }
-      });
+    const updatedProduct = await prisma.product.update({
+      where: { id: productId },
+      data: {
+        name,
+        description,
+        price: parseFloat(price),
+        stock: parseInt(stock),
+      },
+    });
 
-      res.status(200).json(updatedProduct);
+    res.status(200).json(updatedProduct);
   } catch (error) {
-      console.error("Failed to update product:", error);
-      res.status(500).json({ message: "Failed to update product" });
+    console.error("Failed to update product:", error);
+    res.status(500).json({ message: "Failed to update product" });
   }
 });
-
 
 module.exports = productRouter;
