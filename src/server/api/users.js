@@ -7,7 +7,7 @@ const { createUser, getUser } = require("../db");
 
 const jwt = require("jsonwebtoken");
 
-const { verifyToken } = require("../middleware/util.js");
+const { verify } = require("../middleware/util.js");
 
 userRouter.get("/", verify, async (req, res, next) => {
   try {
