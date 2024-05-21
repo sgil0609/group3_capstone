@@ -34,7 +34,8 @@ const Login = ({ setUser }) => {
       setMessage("Login successful!");
       
       localStorage.setItem("token", result.token)
-      console.log("token equals", result.token);
+      
+      // console.log("token equals", result.token);
 
       setUser(result.user);
       setLoggedIn(true);
