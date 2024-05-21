@@ -6,12 +6,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
-import {
-  SubNavHome,
-  SubNavMens,
-  SubNavWomens,
-  SubNavAccount,
-} from "./components/NavBar";
+import { SubNavHome, SubNavMens, SubNavWomens, SubNavAccount } from "./components/NavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./style.css";
@@ -31,6 +26,12 @@ function App() {
     setCartCount(totalCount);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+  };
+
+
   return (
     <div>
       <header>
@@ -39,7 +40,7 @@ function App() {
           <SubNavHome />
           <SubNavMens setSelectedCategory={setSelectedCategory} />
           <SubNavWomens setSelectedCategory={setSelectedCategory} />
-          <SubNavAccount />
+          <SubNavAccount user={user} handleLogout={handleLogout} />
           <Link className="subnavbtn" to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} />
           </Link>

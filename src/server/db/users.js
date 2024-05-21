@@ -58,7 +58,10 @@ const getUserByEmail = async (email) => {
     if (!user) {
       return;
     }
-    return user;
+    return {
+      ...user,
+      name: `${user.first_name} ${user.last_name}`,
+    };
   } catch (err) {
     throw err;
   }

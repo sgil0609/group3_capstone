@@ -34,14 +34,23 @@ const SubNavWomens = ({ setSelectedCategory }) => {
   );
 };
 
-const SubNavAccount = () => {
+const SubNavAccount = ({ user }) => {
+
   return (
     <div className="subnav">
-      <Link className="subnavbtn" to="/login"> My Account <i className="fa fa-caret-down"></i></Link>
-      <div className="subnav-content">
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-      </div>
+      {user ? (
+        <div>
+          <span> {user.name}</span>
+        </div>  
+      ) : (
+        <Link className="subnavbtn" to="/login"> My Account <i className="fa fa-caret-down"></i></Link>
+      )}
+      {user ? null : ( 
+        <div className="subnav-content">
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </div>
+      )}
     </div>
   );
 };
