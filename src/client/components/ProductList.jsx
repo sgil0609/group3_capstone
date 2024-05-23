@@ -7,7 +7,7 @@ const ProductList = ({ selectedCategories = [] }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("https://group3-capstone-test.onrender.com/api/product");
+        const response = await fetch("http://localhost:3000/api/product");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
