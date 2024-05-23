@@ -25,7 +25,7 @@ const Register = () => {
 
   const register = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/auth/register", {
+      const response = await fetch("https://group3-capstone-test.onrender.com/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
