@@ -6,7 +6,8 @@
     "dev": "nodemon src/server/main.js -w src/server ",
     "start": "NODE_ENV=production node src/server/main.js",
     "seed": "node ./src/server/seed/seed.js",
-    "build": "vite build"
+    "build": "vite build",
+    "test": "jest"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
@@ -16,6 +17,7 @@
     "dotenv": "^16.3.1",
     "env": "^0.0.2",
     "express": "^4.19.2",
+    "jest": "^29.7.0",
     "jsonwebtoken": "^9.0.1",
     "netstat": "^0.0.2",
     "pg": "^8.11.5",
