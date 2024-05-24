@@ -2,34 +2,43 @@ const { PrismaClient } = require('@prisma/client');
 const { link } = require('../api/product');
 const { Decimal } = require('@prisma/client/runtime/library');
 const prisma = new PrismaClient();
+const bcrypt = require('bcrypt');
 
 async function main() {
 
-    const user1 = await prisma.user.create({
-        data: {
-            email: "jane.doe@example.com",
-            password: "securepassword",
-            first_name: "Jane",
-            last_name: "Doe",
-            user_addresses: {
-                create: [{
-                    address_line1: "123 Main St",
-                    address_line2: "Apt 4",
-                    city: "Metropolis",
-                    postal_code: 12345,
-                    country: "USA",
-                    telephone: "123-456-7890"
-                }]
-            },
-            user_payments: {
-                create: [{
-                    payment_type: "Credit Card",
-                    provider: "Visa",
-                    account_id: "1234567890123456"
-                }]
-            }
+// Define the role constant
+const ROLE_ADMIN = 'admin';
+
+// Hash the password using bcrypt with 10 salts
+const hashedPassword = await bcrypt.hash("securepassword", 10);
+
+// Create the admin user with the hashed password
+const user1 = await prisma.user.create({
+    data: {
+        email: "jane.doe@example.com",
+        password: hashedPassword,
+        first_name: "Jane",
+        last_name: "Doe",
+        role: ROLE_ADMIN, // Assign the role as admin
+        user_addresses: {
+            create: [{
+                address_line1: "123 Main St",
+                address_line2: "Apt 4",
+                city: "Metropolis",
+                postal_code: 12345,
+                country: "USA",
+                telephone: "123-456-7890"
+            }]
+        },
+        user_payments: {
+            create: [{
+                payment_type: "Credit Card",
+                provider: "Visa",
+                account_id: "1234567890123456"
+            }]
         }
-    });
+    }
+});
 
     // Create the second user with an order in progress
     const user2 = await prisma.user.create({
