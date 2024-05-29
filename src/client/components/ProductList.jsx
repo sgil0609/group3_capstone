@@ -56,7 +56,7 @@ const ProductList = ({ selectedCategories = [], isAdmin }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:3000/api/product/add", {
+      const response = await fetch("https://group3-capstone-test.onrender.com/api/product/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
