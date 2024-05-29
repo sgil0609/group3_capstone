@@ -12,7 +12,7 @@ const AdminUsers = ({ user }) => {
 
   const fetchUsers = async () => { // Fetch users from API
     try {
-      const response = await fetch("http://localhost:3000/api/users", {
+      const response = await fetch("https://group3-capstone-test.onrender.com//api/users", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
