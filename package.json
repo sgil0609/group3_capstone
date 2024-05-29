@@ -7,7 +7,8 @@
     "start": "NODE_ENV=production node src/server/main.js",
     "seed": "node ./src/server/seed/seed.js",
     "build": "vite build",
-    "test": "jest"
+    "test": "jest",
+    "reset": "npx prisma migrate reset"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
