@@ -1,20 +1,22 @@
 import React, { useState } from "react";
+import ProductList from "./ProductList";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, setIsAdmin }) => { // Defining the Login component
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e) => { // Function to change email
     setEmail(e.target.value);
   };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e) => { // Function to change password
     setPassword(e.target.value);
   };
 
-  const login = async () => {
+  const login = async () => { // Login
     try {
       const response = await fetch("https://group3-capstone-test.onrender.com/api/auth/login", {
         method: "POST",
@@ -33,23 +35,25 @@ const Login = ({ setUser }) => {
       }
       setMessage("Login successful!");
       
-      localStorage.setItem("token", result.token)
-      
-      // console.log("token equals", result.token);
+      localStorage.setItem("token", result.token) // Store the token in local storage
 
       setUser(result.user);
       setLoggedIn(true);
       setEmail("");
       setPassword("");
+
+      setIsAdminLoggedIn(result.user && result.user.role === "admin"); // Checking to see if user is admin after login
+
     } catch (err) {
       console.error(`${err.name}: ${err.message}`);
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = () => { // Handle logging out
     setUser(null);
     setLoggedIn(false);
     setMessage("");
+    setIsAdminLoggedIn(false);
   };
 
   const handleSubmit = (e) => {
@@ -88,6 +92,8 @@ const Login = ({ setUser }) => {
         </form>
       )}
       <p>{message}</p>
+
+      {isLoggedIn && <ProductList selectedCategories={[]} isAdmin={isAdminLoggedIn} />}
     </div>
   );
 };
