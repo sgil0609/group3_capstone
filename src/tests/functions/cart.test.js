@@ -26,7 +26,7 @@ describe("POST /add-to-cart", () => {
     };
     const response = await request(app).post("/add-to-cart").send(orderData);
     expect(response.status).toBe(201);
-    expect(response.body).toHaveProperty("id"); // Assuming your order object has an 'id' property
+    expect(response.body).toHaveProperty("id"); 
   });
 
   it("should handle errors when creating an order", async () => {
@@ -41,4 +41,4 @@ describe("POST /add-to-cart", () => {
   });
 });
 
-// Add similar tests for other routes (e.g., PUT /users/:userId/orders/complete)
+

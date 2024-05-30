@@ -90,4 +90,34 @@ cartRouter.put("/users/:userId/orders/complete", async (req, res) => {
   }
 });
 
+cartRouter.delete(
+  "/users/:userId/orders/products/:productId",
+  async (req, res) => {
+    const { productId } = req.params;
+
+    try {
+      const product = await prisma.product.findUnique({
+        where: {
+          id: parseInt(productId),
+        },
+      });
+
+      if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+      // Delete the product
+      await prisma.product.delete({
+        where: {
+          id: parseInt(productId),
+        },
+      });
+
+      res.json({ message: "Product deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      res.status(500).json({ error: "Failed to delete product" });
+    }
+  }
+);
+
 module.exports = cartRouter;
