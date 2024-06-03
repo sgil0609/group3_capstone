@@ -19,7 +19,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0); // Define cartCount state
   const [user, setUser] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false); //Define isAdmin state
+  const [isAdmin, setIsAdmin] = useState(false); // Define isAdmin state
 
   const navigate = useNavigate();
 
@@ -35,6 +35,7 @@ function App() {
     localStorage.removeItem("token");
     setUser(null);
     setIsAdmin(false); // Reset isAdmin
+    navigate('/login'); // Redirect to the login page after logging out
   };
 
   useEffect(() => {
@@ -45,7 +46,7 @@ function App() {
     }
   }, [user]);
 
-  return ( // Define the routes
+  return ( // Defining the routes
     <div>
       <header>
         <div className="logo">SADD</div>
@@ -63,7 +64,7 @@ function App() {
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/login" element={<Login setUser={setUser} setIsAdmin={setIsAdmin}/>} />
         <Route path="/register" element={<Register />} />
         <Route path="/productlist" element={<ProductList category={selectedCategory} isAdmin={isAdmin} />} />
         <Route path="/product/:id/details" element={<ProductDetails cartItems={cartItems} setCartItems={setCartItems} updateCartCount={updateCartCount} />} />
