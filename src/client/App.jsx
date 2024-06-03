@@ -39,12 +39,25 @@ function App() {
   };
 
   useEffect(() => {
-    if (user && user.role === "admin") {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("token");
+
+    if (storedUser && token) {
+      setUser(storedUser);
+    if (storedUser.role === "admin") {
       setIsAdmin(true);
     } else {
       setIsAdmin(false);
     }
-  }, [user]);
+  }
+}, []);
+
+  //   } user.role === "admin") {
+  //     setIsAdmin(true);
+  //   } else {
+  //     setIsAdmin(false);
+  //   }
+  // }, [user]);
 
   return ( // Defining the routes
     <div>
