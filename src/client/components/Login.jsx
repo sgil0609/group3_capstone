@@ -93,7 +93,6 @@ const Login = ({ setUser, setIsAdmin }) => { // Defining the Login component
       )}
       <p>{message}</p>
 
-      {isLoggedIn && <ProductList selectedCategories={[]} isAdmin={isAdminLoggedIn} />}
     </div>
   );
 };
