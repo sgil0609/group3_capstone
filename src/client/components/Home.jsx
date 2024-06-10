@@ -8,13 +8,28 @@ export default function Home() {
     <div className="home">
       <div className="top-image">
         <img src={AFDenim} alt="denim" />
-      </div>
-      <div className="side-2">
-        <div className="CKJ">
-          <img src={CKJ} alt="ck" />
+        <div className="overlay">
+          <h1>Welcome to Our Store</h1>
+          <p>Discover the latest trends in fashion.</p>
+          <button className="shop-now">Shop Now</button>
         </div>
-        <div className="HM">
-          <img src={HM} alt="hmg" />
+      </div>
+      <div className="products-grid">
+        <div className="product">
+          <img src={CKJ} alt="Calvin Klein Jeans" />
+          <div className="product-info">
+            <h2>Calvin Klein Jeans</h2>
+            <p>Stylish and comfortable denim for any occasion.</p>
+            <button className="shop-now">Shop Now</button>
+          </div>
+        </div>
+        <div className="product">
+          <img src={HM} alt="H&M" />
+          <div className="product-info">
+            <h2> SAAD Collection</h2>
+            <p>Affordable fashion for every season.</p>
+            <button className="shop-now">Shop Now</button>
+          </div>
         </div>
       </div>
     </div>

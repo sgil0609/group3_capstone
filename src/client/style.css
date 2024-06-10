@@ -1,9 +1,10 @@
+
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; 
+  height: 100vh;
 }
 
 .App-header {
@@ -11,20 +12,17 @@
   font-size: 24px;
 }
 
-#comp-img{
+#comp-img {
   width: 250px;
 }
 
-/* Add more styling for other elements if needed */
-
+/* Header and Navigation */
 header {
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-color: whitesmoke;
   color: red;
   padding: 10px 20px;
-  padding-top: 20px;
-  background-color: white;
 }
 
 .logo {
@@ -36,7 +34,6 @@ header {
   align-items: center;
   font-size: 20px;
   font-family: Verdana;
-  background-color: white;
 }
 
 .subnav {
@@ -88,12 +85,13 @@ header {
   margin-left: 10px;
 }
 
+/* Product Details */
 .product-details {
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .product-image {
@@ -109,7 +107,6 @@ header {
   font-size: 23px;
   margin: 10px 0;
 }
-
 
 .product-details .product-price {
   font-size: 24px;
@@ -129,6 +126,7 @@ header {
   width: 250px;
 }
 
+/* Product List */
 .product-list {
   margin-top: 20px;
   padding: 20px;
@@ -203,6 +201,7 @@ header {
   margin-bottom: 20px;
 }
 
+/* Login */
 .login {
   display: flex;
   flex-direction: column;
@@ -256,7 +255,7 @@ button:hover {
   background-color: rgb(129, 101, 251);
 }
 
-
+/* Register */
 .register {
   width: 540px;
   margin: auto;
@@ -309,31 +308,121 @@ button:hover {
   margin-top: 10px;
 }
 
+/* Home Page */
 .home {
   display: flex;
-  margin-left: 60px;
   flex-direction: column;
+  align-items: center;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .top-image {
-  margin-top: 40px;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
   margin-bottom: 40px;
 }
 
-.side-2 {
+.top-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.overlay h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+.overlay p {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.shop-now {
+  background-color: #ff6f61;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.shop-now:hover {
+  background-color: #ff3b2e;
+}
+
+.products-grid {
   display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  gap: 20px;
+  width: 100%;
 }
 
-.side-2 div {
-  margin-right: 40px;
+.product {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  width: 45%;
+  text-align: center;
 }
 
-.side-2 img {
+.product img {
   width: 100%;
   height: auto;
-  max-width: 680px;
 }
 
+.product-info {
+  padding: 20px;
+}
+
+.product-info h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
+
+.product-info p {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.product-info .shop-now {
+  margin-top: 10px;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product {
+    width: 80%;
+  }
+}
+
+/* Cart */
 .cart-item {
   display: flex;
   align-items: center;
@@ -341,7 +430,7 @@ button:hover {
 }
 
 .cart-item-image {
-  width: 300px; 
+  width: 300px;
   height: auto;
   margin-right: 20px;
 }
@@ -355,18 +444,18 @@ button:hover {
 .cart-item-actions {
   display: flex;
   align-items: center;
-  gap: 15px; 
+  gap: 15px;
 }
 
 .cart-item-quantity {
-  width: 60px; 
+  width: 60px;
   font-size: 18px;
 }
 
 .remove-icon {
   cursor: pointer;
   color: red;
-  font-size: 18px; 
+  font-size: 18px;
 }
 
 .checkout-button {
