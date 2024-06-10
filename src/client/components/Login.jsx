@@ -17,7 +17,7 @@ const Login = ({ setUser, setIsAdmin }) => { // Defining the Login component
 
   const login = async () => { // Login handle process
     try {
-      const response = await fetch("http://localhost:3000/api/auth/login", {
+      const response = await fetch("http://localhost:3000/api/auth/login", { // Post request to login API
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const Login = ({ setUser, setIsAdmin }) => { // Defining the Login component
     <div className="login">
       <h2>{isLoggedIn ? "" : "Login"}</h2>
       {isLoggedIn ? (
-        <button onClick={handleLogout} className="button">Logout</button>
+        <button onClick={handleLogout} className="button">Logout</button> // Logout button
       ) : (
         <form onSubmit={handleSubmit}>
           <div>
@@ -92,8 +92,8 @@ const Login = ({ setUser, setIsAdmin }) => { // Defining the Login component
               required
             />
           </div>
-          <button type="submit">Login</button>
-        </form>
+          <button type="submit">Login</button>  
+        </form> // Login button
       )}
       <p>{message}</p>
 

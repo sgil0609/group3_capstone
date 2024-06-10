@@ -1,7 +1,7 @@
 // components/AdminUsers.jsx
 import React, { useState, useEffect } from "react";
 
-const AdminUsers = ({ user }) => {
+const AdminUsers = ({ user }) => { // Define function for Admins
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const AdminUsers = ({ user }) => {
     try {
       const response = await fetch("http://localhost:3000/api/users", {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Authorizing token from local storage
         },
       });
       if (!response.ok) {
@@ -23,7 +23,7 @@ const AdminUsers = ({ user }) => {
       const data = await response.json();
       setUsers(data);
     } catch (error) {
-      console.log("Error fetching users:", error);
+      console.log("Error fetching users:", error); // Log an error message if fetching a user is failed
     }
   };
 

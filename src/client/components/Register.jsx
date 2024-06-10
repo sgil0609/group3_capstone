@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Register = () => {
+const Register = () => { // State variables for user registration
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ const Register = () => {
     setPassword(e.target.value);
   };
 
-  const register = async () => {
+  const register = async () => { // Function for user registration
     try {
       const response = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",

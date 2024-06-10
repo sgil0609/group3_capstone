@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const SubNavHome = () => {
+const SubNavHome = () => { // Component for Home Tag in the Navigation bar
   return (
     <div className="subnav">
       <Link className="subnavbtn" to="/">Home</Link>
@@ -12,12 +12,12 @@ const SubNavMens = ({ setSelectedCategory }) => { // Add category for Mens
   return (
     <div className="subnav">
       <Link className="subnavbtn" to="/mens" onClick={() => setSelectedCategory("mens")}>Mens <i className="fa fa-caret-down"></i></Link>
-      <div className="subnav-content">
+      <div className="subnav-content"> 
         <Link to="/mens/tops">Tops</Link>
         <Link to="/mens/bottoms">Bottoms</Link>
         <Link to="/mens/shoes">Shoes</Link>
       </div>
-    </div>
+    </div> // Sub-categories for Mens
   );
 };
 
@@ -29,8 +29,8 @@ const SubNavWomens = ({ setSelectedCategory }) => { // Add category for Womens
         <Link to="/womens/tops">Tops</Link>
         <Link to="/womens/bottoms">Bottoms</Link>
         <Link to="/womens/shoes">Shoes</Link>
-      </div>
-    </div>
+      </div> 
+    </div> // Sub-categories for Womens
   );
 };
 
@@ -42,13 +42,13 @@ const SubNavAccount = ({ user, handleLogout }) => { // User Account Tab for Navi
     setDropDownVisible(!dropdownVisible);
   };
 
-  const handleAdminUsersClick = () => {
-    if (!user && user.role === "admin") {
+  const handleAdminUsersClick = () => { // Function to handle click on users if a user is an admin
+    if (!user && user.role === "admin") { 
       navigate("/admin/users");
     } else {
-      navigate("/login");
+      navigate("/login"); 
     }
-  };
+  }; // / If user is not logged in or an admin, navigate to login
   
   return (
     <div className="subnav">
