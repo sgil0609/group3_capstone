@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const ProductList = ({ selectedCategories = [], isAdmin }) => {
+const ProductList = ({ selectedCategories = [], isAdmin }) => { // State products, add form, product details
   const [products, setProducts] = useState([]);
   const [showAddProductForm, setShowAddProductForm] = useState(false);
   const [newProduct, setNewProduct] = useState({
